@@ -48,6 +48,7 @@ def github_secrets():
     if len(qqreadheaders) == len(qqreadtimeheaders) and len(qqreadtimeheaders) == len(qqreadtimeurl):
         qqreadLists = list(
             zip(qqreadheaders, qqreadtimeheaders, qqreadtimeurl))
+        print(qqreadLists)
     else:
         print("各项Secrets数量不符，请修改！")
 
