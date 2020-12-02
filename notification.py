@@ -7,8 +7,9 @@ import time
 # 通知服务
 #######################
 
-# [0,1,2,3]  0:不通知     1:server酱      2:bark服务
-needYou2Know = 0
+# [0,1,2]  0:不通知     1:server酱      2:bark服务
+
+NOTIFYCFG = 0
 
 SCKEY = ''        # Server酱的SCKEY
 
@@ -60,8 +61,10 @@ def bark(title, content):
         f"""https://api.day.app/{bark_token}/{title}/{content}""")
     print(response.text)
 
-
-notify = [n0, serverJ, bark][needYou2Know]
+if "NOTIFYCFG" in os.environ:
+    NOTIFYCFG = os.environ["NOTIFYCFG"]
+    
+notify = [n0, serverJ, bark][NOTIFYCFG]
 
 if __name__ == "__main__":
     print("通知服务测试")
