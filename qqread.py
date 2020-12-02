@@ -19,7 +19,7 @@ DELAYSEC = 1  # 单次任务延时，默认为1秒
 def getTemplate(headers, functionId):
     functionURL = f"https://mqqapi.reader.qq.com/mqq/{functionId}"
     delay()
-    data = requests.get(functionURL, headers=headers).json()
+    data = requests.get(functionURL, headers=eval(headers)).json()
     return data
 
 # 获取任务列表
@@ -50,7 +50,7 @@ def qqreadticket(headers):
     qqreadticketurl = "https://mqqapi.reader.qq.com/mqq/sign_in/user"
     delay()
     ticket_data = requests.post(
-        qqreadticketurl, headers=headers).json()['data']
+        qqreadticketurl, headers=eval(headers)).json()['data']
     return ticket_data
 
 # 每日打卡
@@ -144,7 +144,7 @@ def qqreadaddtime(headers, addtimeurl):
     url = re.sub(findtime1.findall(addtimeurl)[
                  0], str(sectime), str(addtimeurl))
     delay()
-    addtime_data = requests.get(url, headers=headers).json()
+    addtime_data = requests.get(url, headers=eval(headers)).json()
     return addtime_data
 
 # 每日阅读时长奖励
