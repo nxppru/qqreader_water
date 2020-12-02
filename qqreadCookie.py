@@ -73,7 +73,6 @@ def valid(qqheaders):
 
 def get_cookies():
     if "QQREADHEADERS" and "QQREADTIMEHEADERS" and "QQREADTIMEURL" in os.environ:
-        print ("YES")
         qqreadLists = github_secrets()
     return [i for i in qqreadLists if valid(i)]
 
