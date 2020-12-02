@@ -18,7 +18,7 @@ NOTIFYTYPE = 3  # 0为关闭通知，1为所有通知，2为领取宝箱成功�
 # 以上为可修改参数
 
 if "NOTIFYTYPE" in os.environ:
-    NOTIFYTYPE = int(os.environ["NOTIFYTYPE"])
+    NOTIFYTYPE = os.environ["NOTIFYTYPE"]
 
 
 def getTemplate(headers, functionId):
