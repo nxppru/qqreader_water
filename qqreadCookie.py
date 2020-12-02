@@ -59,7 +59,7 @@ def github_secrets():
 
 
 def valid(qqheaders):
-    headers = dict(qqheaders[0])
+    headers = eval(qqheaders[0])
     response = requests.get(
         'https://mqqapi.reader.qq.com/mqq/user/init', headers=headers)
     if response.json()["data"]['isLogin'] == False:
