@@ -61,7 +61,7 @@ def bark(title, content):
         f"""https://api.day.app/{bark_token}/{title}/{content}""")
     print(response.text)
 
-if "NOTIFYCFG" in os.environ and os.environ["NOTIFYCFG"]:
+if "NOTIFYCFG" in os.environ and os.environ["NOTIFYCFG"].strip():
     NOTIFYCFG = eval(os.environ["NOTIFYCFG"])
     
 notify = [n0, serverJ, bark][NOTIFYCFG]
