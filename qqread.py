@@ -22,125 +22,110 @@ if "NOTIFYTYPE" in os.environ:
 
 
 def getTemplate(headers, functionId):
+    """请求模板"""
     functionURL = f"https://mqqapi.reader.qq.com/mqq/{functionId}"
     delay()
     data = requests.get(functionURL, headers=eval(headers)).json()
     return data
 
-# 获取任务列表
-
 
 def qqreadtask(headers):
+    """获取任务列表"""
     task_data = getTemplate(headers, "red_packet/user/page?fromGuid=")['data']
     return task_data
 
-# 获取“我的”页面任务
-
 
 def qqreadmytask(headers):
+    """获取“我的”页面任务"""
     mytask_data = getTemplate(headers, "v1/task/list")['data']['taskList']
     return mytask_data
 
-# 获取用户名
-
 
 def qqreadinfo(headers):
+    """获取用户名"""
     info_data = getTemplate(headers, "user/init")['data']
     return info_data
 
-# 书券签到
-
 
 def qqreadticket(headers):
+    """书券签到"""
     qqreadticketurl = "https://mqqapi.reader.qq.com/mqq/sign_in/user"
     delay()
     ticket_data = requests.post(
         qqreadticketurl, headers=eval(headers)).json()['data']
     return ticket_data
 
-# 每日打卡
-
 
 def qqreadsign(headers):
+    """每日打卡"""
     sign_data = getTemplate(headers, "red_packet/user/clock_in/page")['data']
     return sign_data
 
-# 每日打卡翻倍
-
 
 def qqreadsign2(headers):
+    """每日打卡翻倍"""
     sign2_data = getTemplate(headers, "red_packet/user/clock_in_video")
     return sign2_data
 
-# 每日阅读
-
 
 def qqreadtodayread(headers):
+    """每日阅读"""
     todayread_data = getTemplate(headers, "red_packet/user/read_book")
     return todayread_data
 
-# 视频奖励
-
 
 def qqreadvideo(headers):
+    """视频奖励"""
     video_data = getTemplate(headers, "red_packet/user/watch_video")
     return video_data
 
-# 宝箱奖励
-
 
 def qqreadbox(headers):
+    """宝箱奖励"""
     box_data = getTemplate(headers, "red_packet/user/treasure_box")
     return box_data
 
-# 宝箱奖励翻倍
-
 
 def qqreadbox2(headers):
+    """宝箱奖励翻倍"""
     box2_data = getTemplate(headers, "red_packet/user/treasure_box_video")
     return box2_data
 
-# 获取本周阅读时长
-
 
 def qqreadwktime(headers):
+    """获取本周阅读时长"""
     wktime_data = getTemplate(headers, "v1/bookShelfInit")['data']['readTime']
     return wktime_data
 
-# 周阅读时长奖励查询
-
 
 def qqreadwkpickinfo(headers):
+    """周阅读时长奖励查询"""
     wkpickinfo_data = getTemplate(headers, "pickPackageInit")['data']
     return wkpickinfo_data
 
-# 周阅读时长奖励领取
-
 
 def qqreadwkpick(headers, num):
+    """周阅读时长奖励领取"""
     wkpick_data = getTemplate(headers, f"pickPackage?readTime={num}")
     return wkpick_data
 
-# 获取本日阅读时长
-
 
 def qqreadtodaytime(headers):
+    """获取本日阅读时长"""
     todaytime_data = getTemplate(headers, "page/config?router=/pages/book-read/index&options=")[
         'data']['pageParams']['todayReadSeconds']
     return todaytime_data//60
 
-# 本日阅读时长奖励
-
 
 def qqreadtodaygift(headers, sec):
+    """本日阅读时长奖励"""
     todygift_data = getTemplate(
         headers, f"red_packet/user/read_time?seconds={sec}")['data']
     return todygift_data
 
-# 上传阅读时长
-
 
 def qqreadaddtime(headers, addtimeurl):
+    """上传阅读时长"""
     sectime = random.randint(TIME*60*1000, (TIME+1)*60*1000)
     findtime = re.compile(r'readTime=(.*?)&')
     findtime1 = re.compile(r'readTime%22%3A(.*?)%2C')
@@ -152,28 +137,30 @@ def qqreadaddtime(headers, addtimeurl):
     addtime_data = requests.get(url, headers=eval(headers)).json()
     return addtime_data
 
-# 每日阅读时长奖励
-
 
 def qqreadssr(headers, sec):
+    """每日阅读时长奖励"""
     readssr_data = getTemplate(
         headers, f"red_packet/user/read_time?seconds={sec}")
     return readssr_data
 
 
-# 获取北京时间
-
-
 def gettime():
+    """获取北京时间"""
     utc_dt = datetime.utcnow()  # UTC时间
     bj_dt = (utc_dt+timedelta(hours=8)).strftime('%Y-%m-%d %H:%M:%S')  # 北京时间
     return bj_dt
 
-# 延时
-
 
 def delay():
+    """延时"""
     time.sleep(DELAYSEC)
+
+
+def sendmsg(content: str):
+    """发送通知"""
+    notification.notify("企鹅读书通知", content)
+    print("已成功发送通知！")
 
 
 def main():
@@ -273,11 +260,11 @@ def main():
         print(tz)
 
         if NOTIFYTYPE == 1:
-            notification.notify("企鹅读书通知", tz)
+            sendmsg(tz)
         if NOTIFYTYPE == 2 and task_data['treasureBox']['doneFlag'] == 0:
-            notification.notify("企鹅读书通知", tz)
-        if NOTIFYTYPE == 3 and task_data['treasureBox']['doneFlag'] == 0 and task_data['treasureBox']['count']%15 == 0:
-            notification.notify("企鹅读书通知", tz)
+            sendmsg(tz)
+        if NOTIFYTYPE == 3 and task_data['treasureBox']['doneFlag'] == 0 and task_data['treasureBox']['count'] % 15 == 0:
+            sendmsg(tz)
 
 
 if __name__ == "__main__":
