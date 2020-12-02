@@ -28,5 +28,6 @@ jobs:
             QQREADHEADERS: ${{ secrets.QQREADHEADERS }}
             QQREADTIMEHEADERS: ${{ secrets.QQREADTIMEHEADERS }}
             QQREADTIMEURL: ${{ secrets.QQREADTIMEURL }}
+            NOTIFYCFG: ${{ secrets.NOTIFYCFG }}
             SCKEY: ${{ secrets.SCKEY }}
             BARK: ${{ secrets.BARK }}
