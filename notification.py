@@ -64,7 +64,7 @@ def bark(title, content):
 if "NOTIFYCFG" in os.environ:
     NOTIFYCFG = os.environ["NOTIFYCFG"]
     
-notify = [n0, serverJ, bark][NOTIFYCFG]
+notify = [n0, serverJ, bark][int(NOTIFYCFG)]
 
 if __name__ == "__main__":
     print("通知服务测试")
