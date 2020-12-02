@@ -17,7 +17,7 @@ DELAYSEC = 1  # 单次任务延时，默认为1秒
 NOTIFYTYPE = 3  # 0为关闭通知，1为所有通知，2为领取宝箱成功通知，3为每领15个宝箱通知一次
 # 以上为可修改参数
 
-if "NOTIFYTYPE" in os.environ and os.environ["NOTIFYTYPE"]:
+if "NOTIFYTYPE" in os.environ and os.environ["NOTIFYTYPE"].strip():
     NOTIFYTYPE = eval(os.environ["NOTIFYTYPE"])
 
 
