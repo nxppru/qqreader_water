@@ -20,8 +20,8 @@
 
 - 任何以任何方式查看此项目的人或直接或间接使用该项目的任何脚本的使用者都应仔细阅读此声明。本人保留随时更改或补充此免责声明的权利。一旦使用并复制了任何相关脚本或Script项目的规则，则视为您已接受此免责声明。
 
- **您必须在下载后的24小时内从计算机或手机中完全删除以上内容**  
-> ***您使用或者复制了本仓库且本人制作的任何脚本，则视为`已接受`此声明，请仔细阅读*** 
+ ** 您必须在下载后的24小时内从计算机或手机中完全删除以上内容 **  
+> *** 您使用或者复制了本仓库且本人制作的任何脚本，则视为 `已接受` 此声明，请仔细阅读 *** 
 
 
 
@@ -40,9 +40,40 @@
 
 **⚠️cookie获取方法：**
 
-1. 进入 https://m.q.qq.com/a/s/d3eacc70120b9a37e46bad408c0c4c2a  点“我的”,获取`QQREADHEADERS`
+1. 进入 https://m.q.qq.com/a/s/d3eacc70120b9a37e46bad408c0c4c2a  点“我的”，获取 `QQREADHEADERS` 
 
-2. 进一本书阅读一会儿，然后退出，获取`QQREADTIMEHEADERS`和`QQREADTIMEURL`
+2. 进一本书阅读一会儿，然后退出，获取 `QQREADTIMEHEADERS` 和 `QQREADTIMEURL` 
+
+3. `QQREADHEADERS` `QQREADTIMEHEADERS` 两个参数格式为
+
+
+  ```
+{"Cookie":"ywguid=123456789;ywkey=wedqwdlAWVJp9;platform=android;channel=mqqmina;mpVersion=0.30.0;qq_ver=8.4.18.4945;os_ver=Android10......}
+  ```
+
+多账号请按`Enter`键换行隔开示例(这里给下三个账号的示例)
+
+  ```
+{"Cookie":"ywguid=123456789;ywkey=******}
+{"Cookie":"ywguid=123456789;ywkey=******}
+{"Cookie":"ywguid=123456789;ywkey=******}
+  ```
+  
+4. `QQREADTIMEURL` 参数格式为
+
+```
+https://mqqapi.reader.qq.com/mqq/addReadTimeWithBid?scene=***&refer=-1&bid=***&readTime=***&read_type=0&conttype=1&read_status=0&chapter_info=%5B%7B%221%22%3A%7B%22readTime%22%3A***%2C%22pay_status%22%3A0%7D%7D%5D&sp=-1
+```
+
+多账号请按`Enter`键换行隔开示例(这里给下三个账号的示例)
+
+  ```
+https://mqqapi.reader.qq.com/mqq/addReadTimeWithBid?scene=***&refer=-1&bid=***&readTime=***&read_type=0&conttype=1&read_status=0&chapter_info=%5B%7B%221%22%3A%7B%22readTime%22%3A***%2C%22pay_status%22%3A0%7D%7D%5D&sp=-1
+https://mqqapi.reader.qq.com/mqq/addReadTimeWithBid?scene=***&refer=-1&bid=***&readTime=***&read_type=0&conttype=1&read_status=0&chapter_info=%5B%7B%221%22%3A%7B%22readTime%22%3A***%2C%22pay_status%22%3A0%7D%7D%5D&sp=-1
+https://mqqapi.reader.qq.com/mqq/addReadTimeWithBid?scene=***&refer=-1&bid=***&readTime=***&read_type=0&conttype=1&read_status=0&chapter_info=%5B%7B%221%22%3A%7B%22readTime%22%3A***%2C%22pay_status%22%3A0%7D%7D%5D&sp=-1
+  ```
+  
+5. **特别注意：** 三个参数出现的顺序一定要一致
 
 ### 运行方式
 
