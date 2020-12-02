@@ -1,5 +1,6 @@
 # -*- coding: utf8 -*-
 
+import os
 import re
 import time
 import random
@@ -13,7 +14,11 @@ from datetime import datetime, timedelta
 TIME = 5  # 单次上传阅读时间，默认为5分钟
 LIMIT_TIME = 18  # 每日最大上传阅读时间，默认为18小时
 DELAYSEC = 1  # 单次任务延时，默认为1秒
+NOTIFYTYPE = 3  # 0为关闭通知，1为所有通知，2为领取宝箱成功通知，3为每领15个宝箱通知一次
 # 以上为可修改参数
+
+if "NOTIFYTYPE" in os.environ:
+    NOTIFYTYPE = os.environ["NOTIFYTYPE"]
 
 
 def getTemplate(headers, functionId):
@@ -266,6 +271,13 @@ def main():
 
         tz += f"\n🕛耗时：{time.time()-start_time}秒"
         print(tz)
+
+        if NOTIFYTYPE == 1:
+            notification.notify("企鹅读书通知", tz)
+        if NOTIFYTYPE == 2 and task_data['treasureBox']['doneFlag'] == 0:
+            notification.notify("企鹅读书通知", tz)
+        if NOTIFYTYPE == 3 and task_data['treasureBox']['doneFlag'] == 0 and task_data['treasureBox']['count']%15 == 0:
+            notification.notify("企鹅读书通知", tz)
 
 
 if __name__ == "__main__":
