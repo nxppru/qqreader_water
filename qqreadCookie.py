@@ -48,9 +48,11 @@ def github_secrets():
     if len(qqreadheaders) == len(qqreadtimeheaders) and len(qqreadtimeheaders) == len(qqreadtimeurl):
         qqreadLists = list(
             zip(qqreadheaders, qqreadtimeheaders, qqreadtimeurl))
-        print(qqreadLists)
+        return qqreadLists
     else:
         print("各项Secrets数量不符，请修改！")
+        return
+    
 
 
 #######################################
@@ -72,7 +74,7 @@ def valid(qqheaders):
 def get_cookies():
     if "QQREADHEADERS" and "QQREADTIMEHEADERS" and "QQREADTIMEURL" in os.environ:
         print ("YES")
-        github_secrets()
+        qqreadLists = github_secrets()
     return [i for i in qqreadLists if valid(i)]
 
 
