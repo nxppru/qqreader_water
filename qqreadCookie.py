@@ -61,7 +61,7 @@ def github_secrets():
 def valid(qqheaders):
     headers = qqheaders[0]
     response = requests.get(
-        'https://mqqapi.reader.qq.com/mqq/user/init', headers=headers)
+        'https://mqqapi.reader.qq.com/mqq/user/init', headers=dict(headers))
     if response.json()["data"]['isLogin'] == False:
         QQNUM = re.findall(r'ywguid=(.*?);ywkey', headers['Cookie'])[0]
         print(f"""## {QQNUM}: headers过期""")
