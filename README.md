@@ -27,17 +27,19 @@
 
 ### 主要参数：
 
-| 名称                 | 功能           | 属性   | 备注                            |
-| :------------------: | :--------   : | :----: | ------------------------------ |
-| `QQREADHEADERS`      | 主header      | 必须   | 绝大多数功能的正常使用需要此参数  |
-| `QQREADTIMEHEADERS`  | 阅读时长header | 必须   | 上传阅读时长功能需要的参数       |
-| `QQREADTIMEURL`      | 阅读时长URL    | 必须   | 上传阅读时长功能需要的URL        |
-| `NOTIFYTYPE`         | 通知类型       | 非必须 | 详见通知类型                    |
-| `NOTIFYCFG`          | 通知服务       | 非必须 | 详见通知服务                    |
-| `SCKEY`              | server酱key   | 非必须 | 自行获取                        |
-| `BARK`               | bark秘钥      | 非必须 | 自行获取                        |
+| 名称                 | 功能           | 属性   | 备注                            |  
+| :------------------: | :--------   : | :----: | ------------------------------ | 
+| `QQREADHEADERS`      | 主header      | 必须   | 绝大多数功能的正常使用需要此参数  | 
+| `QQREADTIMEHEADERS`  | 阅读时长header | 必须   | 上传阅读时长功能需要的参数       |  
+| `QQREADTIMEURL`      | 阅读时长URL    | 必须   | 上传阅读时长功能需要的URL        | 
+| `NOTIFYTYPE`         | 通知类型       | 非必须 | 详见通知类型                    |  
+| `NOTIFYCFG`          | 通知服务       | 非必须 | 详见通知服务                    | 
+| `SCKEY`              | server酱key   | 非必须 | 自行获取                        | 
+| `BARK`               | bark秘钥      | 非必须 | 自行获取                        | 
+
 
 **⚠️cookie获取方法：**
+
 1. 进入 https://m.q.qq.com/a/s/d3eacc70120b9a37e46bad408c0c4c2a  点“我的”,获取`QQREADHEADERS`
 
 2. 进一本书阅读一会儿，然后退出，获取`QQREADTIMEHEADERS`和`QQREADTIMEURL`
