@@ -38,6 +38,7 @@ def serverJ(title, content):
         print("server酱服务的SCKEY未设置!!\n取消推送")
         return
     print("serverJ服务启动")
+    content = content.replace("\n", "\n\n")
     data = {
         "text": title,
         "desp": content
