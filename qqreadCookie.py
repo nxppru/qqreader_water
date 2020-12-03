@@ -15,13 +15,13 @@ import notification
 
 # qqreadheaders参数填写，填写完注意不要上传
 # 如果有其它账号，还需要将qqreadheaders2填写进下面的qqreadheadersLists
-qqreadheaders1 = {}
-qqreadheaders2 = {}
+qqreadheaders1 = '{}'
+qqreadheaders2 = '{}'
 
 # qqreadheaders参数填写，填写完注意不要上传
 # 如果有其它账号，还需要将qqreadtimeheaders2填写进下面的qqreadheadersLists
-qqreadtimeheaders1 = {}
-qqreadtimeheaders2 = {}
+qqreadtimeheaders1 = '{}'
+qqreadtimeheaders2 = '{}'
 
 # qqreadheaders参数填写，填写完注意不要上传
 # 如果有其它账号，还需要将qqreadheaders2填写进下面的qqreadheadersLists
@@ -29,9 +29,9 @@ qqreadtimeurl1 = ""
 qqreadtimeurl2 = ""
 
 # 如为多账号，请修改下面参数
-qqreadheadersLists = [qqreadheaders1, qqreadheaders2]
-qqreadtimeheadersLists = [qqreadtimeheaders1, qqreadtimeheaders2]
-qqreadtimeurlLists = [qqreadtimeurl1, qqreadtimeurl2]
+qqreadheadersLists = [qqreadheaders1, ]
+qqreadtimeheadersLists = [qqreadtimeheaders1, ]
+qqreadtimeurlLists = [qqreadtimeurl1, ]
 
 qqreadLists = list(
     zip(qqreadheadersLists, qqreadtimeheadersLists, qqreadtimeurlLists))
@@ -40,7 +40,7 @@ qqreadLists = list(
 # 方案2 GitHub action 自动运行    各参数读取自secrets
 
 
-def github_secrets():
+if "QQREADHEADERS" and "QQREADTIMEHEADERS" and "QQREADTIMEURL" in os.environ:
     qqreadheaders = os.environ["QQREADHEADERS"].split('\n')
     qqreadtimeheaders = os.environ["QQREADTIMEHEADERS"].split('\n')
     qqreadtimeurl = os.environ["QQREADTIMEURL"].split('\n')
@@ -48,10 +48,8 @@ def github_secrets():
     if len(qqreadheaders) == len(qqreadtimeheaders) and len(qqreadtimeheaders) == len(qqreadtimeurl):
         qqreadLists = list(
             zip(qqreadheaders, qqreadtimeheaders, qqreadtimeurl))
-        return qqreadLists
     else:
         print("各项Secrets数量不符，请修改！")
-        return
     
 
 
@@ -72,8 +70,6 @@ def valid(qqheaders):
 
 
 def get_cookies():
-    if "QQREADHEADERS" and "QQREADTIMEHEADERS" and "QQREADTIMEURL" in os.environ:
-        qqreadLists = github_secrets()
     return [i for i in qqreadLists if valid(i)]
 
 
