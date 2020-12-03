@@ -119,7 +119,12 @@ GitHub action自动运行，账号信息读取自 `Repo-Setting-Secrets`
   [0，1，2，3]  0：关闭通知   1：所有通知   2：领取宝箱成功通知   3：每领15个宝箱通知一次
 ```
 
+### 同步Fork后的代码
+
+手动同步，[具体教程](http://www.ibloger.net/article/3361.html)
+
 ### 特别感谢(排名不分先后)：
+
 * [@ziye12](https://github.com/ziye12)
 
 * [@Zero-S1](https://github.com/Zero-S1)
