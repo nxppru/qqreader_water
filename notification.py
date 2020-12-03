@@ -1,5 +1,6 @@
 import requests
 import os
+import ast
 import time
 
 
@@ -83,7 +84,7 @@ def telegram_bot(title, content):
 
 
 if "NOTIFYCFG" in os.environ and os.environ["NOTIFYCFG"].strip():
-    NOTIFYCFG = eval(os.environ["NOTIFYCFG"])
+    NOTIFYCFG = ast.literal_eval(os.environ["NOTIFYCFG"])
 
 notify = [n0, serverJ, bark, telegram_bot][NOTIFYCFG]
 
