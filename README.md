@@ -36,7 +36,7 @@
 | `NOTIFYCFG`          | 通知服务       | 非必须 | 详见通知服务                    | 
 | `SCKEY`              | server酱key   | 非必须 | 自行获取                        | 
 | `BARK`               | bark秘钥      | 非必须 | 自行获取                        | 
-| `TG_USER_TOKEN`      | telegram推送  | 非必须 | tg推送,填写自己申请[@BotFather](https://t.me/BotFather)的Token,如`10xxx4:AAFcqxxxxgER5uw` , [具体教程](https://github.com/lxk0301/jd_scripts/blob/master/backUp/TG_PUSH.md) |
+| `TG_BOT_TOKEN`      | telegram推送  | 非必须 | tg推送,填写自己申请[@BotFather](https://t.me/BotFather)的Token,如`10xxx4:AAFcqxxxxgER5uw` , [具体教程](https://github.com/lxk0301/jd_scripts/blob/master/backUp/TG_PUSH.md) |
 | `TG_USER_ID`         | telegram推送  | 非必须 | tg推送,填写[@getuseridbot](https://t.me/getuseridbot)中获取到的纯数字ID, [具体教程](https://github.com/lxk0301/jd_scripts/blob/master/backUp/TG_PUSH.md) |
 
 
