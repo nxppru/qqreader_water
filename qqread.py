@@ -161,8 +161,6 @@ def delay():
 def sendmsg(content: str):
     """发送通知"""
     notification.notify("企鹅读书通知", content)
-    print("已成功发送通知！")
-
 
 def main():
     for index, secrets in enumerate(qqreadCookie.get_cookies()):
