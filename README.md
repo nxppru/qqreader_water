@@ -36,6 +36,8 @@
 | `NOTIFYCFG`          | 通知服务       | 非必须 | 详见通知服务                    | 
 | `SCKEY`              | server酱key   | 非必须 | 自行获取                        | 
 | `BARK`               | bark秘钥      | 非必须 | 自行获取                        | 
+| `TG_USER_TOKEN`      | telegram推送  | 非必须 | tg推送,填写自己申请[@BotFather](https://t.me/BotFather)的Token,如`10xxx4:AAFcqxxxxgER5uw` , [具体教程](https://github.com/lxk0301/jd_scripts/blob/master/backUp/TG_PUSH.md) |
+| `TG_USER_ID`         | telegram推送  | 非必须 | tg推送,填写[@getuseridbot](https://t.me/getuseridbot)中获取到的纯数字ID, [具体教程](https://github.com/lxk0301/jd_scripts/blob/master/backUp/TG_PUSH.md) |
 
 
 **⚠️cookie获取方法：**
@@ -100,11 +102,12 @@ GitHub action自动运行，账号信息读取自 `Repo-Setting-Secrets`
 支持两种通知方式，后续看心情添加其他通知方式
 
 ```
-  [0，1，2]  0:不通知     1:server酱      2:bark服务
+  [0，1，2，3]  0:不通知     1:server酱      2:bark服务      3:Telegram_bot
 ```
 
 1. 使用Server酱的需要参数 `SCKEY` ，支持GitHub action
 2. 使用bark的填写 `BARK` ，支持GitHub action
+3. 使用Telegram Bot的填写 `TG_BOT_TOKEN` `TG_USER_ID` ，支持GitHub action
 
 ### 通知类型
 
@@ -120,4 +123,6 @@ GitHub action自动运行，账号信息读取自 `Repo-Setting-Secrets`
 * [@ziye12](https://github.com/ziye12)
 
 * [@Zero-S1](https://github.com/Zero-S1)
+
+* [@lxk0301](https://github.com/lxk0301)
 
