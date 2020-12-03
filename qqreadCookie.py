@@ -3,6 +3,7 @@ import json
 import time
 import os
 import re
+import ast
 import notification
 
 
@@ -57,7 +58,7 @@ if "QQREADHEADERS" and "QQREADTIMEHEADERS" and "QQREADTIMEURL" in os.environ:
 
 
 def valid(qqheaders):
-    headers = eval(qqheaders[0])
+    headers = ast.literal_eval(qqheaders[0])
     response = requests.get(
         'https://mqqapi.reader.qq.com/mqq/user/init', headers=headers)
     if response.json()["data"]['isLogin'] == False:
