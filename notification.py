@@ -80,7 +80,7 @@ def telegram_bot(title, content):
                  '\n\n'+content, "disable_web_page_preview": "true"}
     response = requests.post(
         url=f'https://api.telegram.org/bot{tg_bot_token}/sendMessage', data=send_data)
-    print(response.text)
+    print(response.json()['ok'])
 
 
 if "NOTIFYCFG" in os.environ and os.environ["NOTIFYCFG"].strip():
