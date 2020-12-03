@@ -7,13 +7,14 @@ import time
 # 通知服务
 #######################
 
-# [0,1,2]  0:不通知     1:server酱      2:bark服务
 
-NOTIFYCFG = 0
+
+NOTIFYCFG = 0     # [0,1,2,3]  0:不通知    1:server酱    2:bark服务    3:Telegram_bot
 
 SCKEY = ''        # Server酱的SCKEY
-
 BARK = ''         # bark服务,自行搜索
+TG_BOT_TOKEN = ''           # telegram bot token 自行申请
+TG_USER_ID = ''             # telegram 用户ID
 ##################################################################
 
 
@@ -61,10 +62,30 @@ def bark(title, content):
         f"""https://api.day.app/{bark_token}/{title}/{content}""")
     print(response.text)
 
+
+def telegram_bot(title, content):
+    """Telegram_bot服务"""
+    print("\n")
+    tg_bot_token = TG_BOT_TOKEN
+    tg_user_id = TG_USER_ID
+    if "TG_BOT_TOKEN" in os.environ and "TG_USER_ID" in os.environ:
+        tg_bot_token = os.environ["TG_BOT_TOKEN"]
+        tg_user_id = os.environ["TG_USER_ID"]
+    if not tg_bot_token or not tg_user_id:
+        print("Telegram推送的tg_bot_token或者tg_user_id未设置!!\n取消推送")
+        return
+    print("Telegram 推送开始")
+    send_data = {"chat_id": tg_user_id, "text": title +
+                 '\n\n'+content, "disable_web_page_preview": "true"}
+    response = requests.post(
+        url=f'https://api.telegram.org/bot{tg_bot_token}/sendMessage', data=send_data)
+    print(response.text)
+
+
 if "NOTIFYCFG" in os.environ and os.environ["NOTIFYCFG"].strip():
     NOTIFYCFG = eval(os.environ["NOTIFYCFG"])
-    
-notify = [n0, serverJ, bark][NOTIFYCFG]
+
+notify = [n0, serverJ, bark, telegram_bot][NOTIFYCFG]
 
 if __name__ == "__main__":
     print("通知服务测试")
