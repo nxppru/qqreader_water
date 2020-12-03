@@ -2,6 +2,7 @@
 
 import os
 import re
+import ast
 import time
 import random
 import requests
@@ -18,14 +19,14 @@ NOTIFYTYPE = 3  # 0为关闭通知，1为所有通知，2为领取宝箱成功�
 # 以上为可修改参数
 
 if "NOTIFYTYPE" in os.environ and os.environ["NOTIFYTYPE"].strip():
-    NOTIFYTYPE = eval(os.environ["NOTIFYTYPE"])
+    NOTIFYTYPE = ast.literal_eval(os.environ["NOTIFYTYPE"])
 
 
 def getTemplate(headers, functionId):
     """请求模板"""
     functionURL = f"https://mqqapi.reader.qq.com/mqq/{functionId}"
     delay()
-    data = requests.get(functionURL, headers=eval(headers)).json()
+    data = requests.get(functionURL, headers=ast.literal_eval(headers)).json()
     return data
 
 
@@ -52,7 +53,7 @@ def qqreadticket(headers):
     qqreadticketurl = "https://mqqapi.reader.qq.com/mqq/sign_in/user"
     delay()
     ticket_data = requests.post(
-        qqreadticketurl, headers=eval(headers)).json()['data']
+        qqreadticketurl, headers=ast.literal_eval(headers)).json()['data']
     return ticket_data
 
 
@@ -134,7 +135,7 @@ def qqreadaddtime(headers, addtimeurl):
     url = re.sub(findtime1.findall(addtimeurl)[
                  0], str(sectime), str(addtimeurl))
     delay()
-    addtime_data = requests.get(url, headers=eval(headers)).json()
+    addtime_data = requests.get(url, headers=ast.literal_eval(headers)).json()
     return addtime_data
 
 
