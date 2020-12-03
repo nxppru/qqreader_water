@@ -32,3 +32,5 @@ jobs:
             NOTIFYCFG: ${{ secrets.NOTIFYCFG }}
             SCKEY: ${{ secrets.SCKEY }}
             BARK: ${{ secrets.BARK }}
+            TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+            TG_USER_ID: ${{ secrets.TG_USER_ID }}
