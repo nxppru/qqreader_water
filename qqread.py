@@ -213,7 +213,7 @@ def main():
                     tz += f"【视频奖励】获得{video_data['data']['amount']}金币\n"
 
             if task_data['taskList'][i]['title'].find("阅读任务") != -1 and task_data['taskList'][i]['doneFlag'] == 0:
-                if todaytime_data >= 1 and todaytime_data < 5:
+                if todaytime_data >= 1 and todaytime_data < 15:
                     todaygift_data = qqreadtodaygift(secrets[0], 30)
                     if todaygift_data['amount'] > 0:
                         tz += f"【阅读金币1】获得{todaygift_data['amount']}金币\n"
