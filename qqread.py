@@ -214,17 +214,17 @@ def main():
 
             if task_data['taskList'][i]['title'].find("阅读任务") != -1 and task_data['taskList'][i]['doneFlag'] == 0:
                 if todaytime_data >= 1 and todaytime_data < 15:
-                    todaygift_data = qqreadtodaygift(secrets[0], 30)
-                    if todaygift_data['amount'] > 0:
-                        tz += f"【阅读金币1】获得{todaygift_data['amount']}金币\n"
+                    todaygift1_data = qqreadtodaygift(secrets[0], 30)
+                    if todaygift1_data['amount'] > 0:
+                        tz += f"【阅读金币1】获得{todaygift1_data['amount']}金币\n"
                 if todaytime_data >= 5 and todaytime_data < 30:
-                    todaygift_data = qqreadtodaygift(secrets[0], 300)
-                    if todaygift_data['amount'] > 0:
-                        tz += f"【阅读金币2】获得{todaygift_data['amount']}金币\n"
+                    todaygift2_data = qqreadtodaygift(secrets[0], 300)
+                    if todaygift2_data['amount'] > 0:
+                        tz += f"【阅读金币2】获得{todaygift2_data['amount']}金币\n"
                 if todaytime_data >= 30:
-                    todaygift_data = qqreadtodaygift(secrets[0], 1800)
-                    if todaygift_data['amount'] > 0:
-                        tz += f"【阅读金币3】获得{todaygift_data['amount']}金币\n"
+                    todaygift3_data = qqreadtodaygift(secrets[0], 1800)
+                    if todaygift3_data['amount'] > 0:
+                        tz += f"【阅读金币3】获得{todaygift3_data['amount']}金币\n"
 
         for i in range(len(mytask_data)):
             if mytask_data[i]['title'].find("每日签到") != -1 and mytask_data[i]['doneFlag'] == 0:
