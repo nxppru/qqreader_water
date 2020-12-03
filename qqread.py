@@ -214,17 +214,19 @@ def main():
 
             if task_data['taskList'][i]['title'].find("阅读任务") != -1 and task_data['taskList'][i]['doneFlag'] == 0:
                 if todaytime_data >= 1 and todaytime_data < 15:
-                    todaygift1_data = qqreadtodaygift(secrets[0], 30)
-                    if todaygift1_data['amount'] > 0:
-                        tz += f"【阅读金币1】获得{todaygift1_data['amount']}金币\n"
+                    todaygift_data = qqreadtodaygift(secrets[0], 30)
+                    if todaygift_data['amount'] > 0:
+                        tz += f"【阅读金币1】获得{todaygift_data['amount']}金币\n"
                 if todaytime_data >= 5 and todaytime_data < 30:
-                    todaygift2_data = qqreadtodaygift(secrets[0], 300)
-                    if todaygift2_data['amount'] > 0:
-                        tz += f"【阅读金币2】获得{todaygift2_data['amount']}金币\n"
+                    time.sleep(2)
+                    todaygift_data = qqreadtodaygift(secrets[0], 300)
+                    if todaygift_data['amount'] > 0:
+                        tz += f"【阅读金币2】获得{todaygift_data['amount']}金币\n"
                 if todaytime_data >= 30:
-                    todaygift3_data = qqreadtodaygift(secrets[0], 1800)
-                    if todaygift3_data['amount'] > 0:
-                        tz += f"【阅读金币3】获得{todaygift3_data['amount']}金币\n"
+                    time.sleep(2)
+                    todaygift_data = qqreadtodaygift(secrets[0], 1800)
+                    if todaygift_data['amount'] > 0:
+                        tz += f"【阅读金币3】获得{todaygift_data['amount']}金币\n"
 
         for i in range(len(mytask_data)):
             if mytask_data[i]['title'].find("每日签到") != -1 and mytask_data[i]['doneFlag'] == 0:
@@ -245,7 +247,7 @@ def main():
                 tz += "【周时长奖励】已全部领取\n"
 
         if task_data['treasureBox']['videoDoneFlag'] == 0:
-            time.sleep(8)
+            time.sleep(6)
             box2_data = qqreadbox2(secrets[0])
             if box2_data['code'] == 0:
                 tz += f"【宝箱翻倍】获得{box2_data['data']['amount']}金币\n"
