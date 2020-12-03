@@ -73,9 +73,6 @@ def get_cookies():
     return [i for i in qqreadLists if valid(i)]
 
 
-print("***"*20)
-print(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
-
 if __name__ == "__main__":
     print(">>>检查有效性")
     for i in get_cookies():
