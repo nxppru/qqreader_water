@@ -132,8 +132,8 @@ def qqreadaddtime(headers, addtimeurl):
     #findtime1 = re.compile(r'readTime%22%3A(.*?)%2C')
     url = re.sub(findtime.findall(addtimeurl)[
                  0], str(sectime), str(addtimeurl))
-    #url = re.sub(findtime1.findall(addtimeurl)[
-    #             0], str(sectime), str(addtimeurl))
+    url = re.sub(findtime1.findall(addtimeurl)[
+                 0], str(sectime), str(addtimeurl))
     delay()
     addtime_data = requests.get(url, headers=ast.literal_eval(headers)).json()
     return addtime_data
