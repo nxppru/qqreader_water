@@ -97,7 +97,7 @@ https://mqqapi.reader.qq.com/mqq/addReadTimeWithBid?scene=***&refer=-1&bid=***&r
 
 本地执行、云服务器、云函数等等
 
-下载到本地，填写 `qqreadCookie.py` 中的 `qqreadheaders` `qqreadtimeheaders` `qqreadtimeurl` 等信息  
+下载到本地，填写 `qqreadCookie.py` 中的 `qqreadheaders` `qqreadbodys` `qqreadtimeurl` 等信息  
 云函数请善用搜索以及对应官方文档
 
 ##### 2、方案二
