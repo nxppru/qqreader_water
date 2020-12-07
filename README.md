@@ -30,7 +30,7 @@
 | 名称                 | 功能           | 属性   | 备注                            |  
 | :------------------: | :-----------: | :----: | ------------------------------ | 
 | `QQREADHEADERS`      | 主header      | 必须   | 绝大多数功能的正常使用需要此参数  | 
-| `QQREADTIMEHEADERS`  | 阅读时长header | 必须   | 上传阅读时长功能需要的参数       |  
+| `QQREADBODYS`        | 主body        | 必须   | 绝大多数功能的正常使用需要此参数  |  
 | `QQREADTIMEURL`      | 阅读时长URL    | 必须   | 上传阅读时长功能需要的URL        | 
 | `NOTIFYTYPE`         | 通知类型       | 非必须 | 详见通知类型                    |  
 | `NOTIFYCFG`          | 通知服务       | 非必须 | 详见通知服务                    | 
@@ -42,11 +42,11 @@
 
 **⚠️cookie获取方法：**
 
-1. 进入 https://m.q.qq.com/a/s/d3eacc70120b9a37e46bad408c0c4c2a  点“我的”，获取 `QQREADHEADERS` 
+1. 进入 https://m.q.qq.com/a/s/d3eacc70120b9a37e46bad408c0c4c2a 
 
-2. 进一本书阅读一会儿，然后退出，获取 `QQREADTIMEHEADERS` 和 `QQREADTIMEURL` 
+2. 进一本书阅读一会儿，然后退出，获取`QQREADHEADERS` `QQREADBODYS` 和 `QQREADTIMEURL` 
 
-3. `QQREADHEADERS` `QQREADTIMEHEADERS` 两个参数格式为
+3. `QQREADHEADERS`参数格式为
 
 
   ```
@@ -60,8 +60,22 @@
 {"Cookie":"ywguid=123456789;ywkey=******","aaa":"bbb",......}
 {"Cookie":"ywguid=123456789;ywkey=******","aaa":"bbb",......}
   ```
-  
-4. `QQREADTIMEURL` 参数格式为
+
+4. `QQREADBODYS` 参数格式为
+
+```
+{"common":{"appid":***,"areaid":5,"qq_ver":"8.4.18.4945","os_ver":"Android 10","mp_ver":"0.31.0","mpos_ver":"1.21.0","brand":"***","model":"***","screenWidth":393,"screenHeight":816,"windowWidth":393,"windowHeight":762,"openid":"****","guid":***,"session":"***","scene":1023,"source":-1,"hasRedDot":"false","missions":-1,"caseID":-1},"dataList":[{"click1":"bookRead_click_C","click2":"bookRead_click_C","route":"pages/book-shelf/index","refer":-1,"options":{},"dis":1607305485030,"ext6":58,"eventID":"bookShelf_makeMoney_I","type":"shown"}]}
+```
+
+多账号请按`Enter`键换行隔开示例(这里给下三个账号的示例)
+
+  ```
+{"common":{"appid":***,"areaid":5,"qq_ver":"8.4.18.4945","os_ver":"Android 10","mp_ver":"0.31.0","mpos_ver":"1.21.0","brand":"***","model":"***","screenWidth":393,"screenHeight":816,"windowWidth":393,"windowHeight":762,"openid":"****","guid":***,"session":"***","scene":1023,"source":-1,"hasRedDot":"false","missions":-1,"caseID":-1},"dataList":[{"click1":"bookRead_click_C","click2":"bookRead_click_C","route":"pages/book-shelf/index","refer":-1,"options":{},"dis":1607305485030,"ext6":58,"eventID":"bookShelf_makeMoney_I","type":"shown"}]}
+{"common":{"appid":***,"areaid":5,"qq_ver":"8.4.18.4945","os_ver":"Android 10","mp_ver":"0.31.0","mpos_ver":"1.21.0","brand":"***","model":"***","screenWidth":393,"screenHeight":816,"windowWidth":393,"windowHeight":762,"openid":"****","guid":***,"session":"***","scene":1023,"source":-1,"hasRedDot":"false","missions":-1,"caseID":-1},"dataList":[{"click1":"bookRead_click_C","click2":"bookRead_click_C","route":"pages/book-shelf/index","refer":-1,"options":{},"dis":1607305485030,"ext6":58,"eventID":"bookShelf_makeMoney_I","type":"shown"}]}
+{"common":{"appid":***,"areaid":5,"qq_ver":"8.4.18.4945","os_ver":"Android 10","mp_ver":"0.31.0","mpos_ver":"1.21.0","brand":"***","model":"***","screenWidth":393,"screenHeight":816,"windowWidth":393,"windowHeight":762,"openid":"****","guid":***,"session":"***","scene":1023,"source":-1,"hasRedDot":"false","missions":-1,"caseID":-1},"dataList":[{"click1":"bookRead_click_C","click2":"bookRead_click_C","route":"pages/book-shelf/index","refer":-1,"options":{},"dis":1607305485030,"ext6":58,"eventID":"bookShelf_makeMoney_I","type":"shown"}]}
+  ```
+
+5. `QQREADTIMEURL` 参数格式为
 
 ```
 https://mqqapi.reader.qq.com/mqq/addReadTimeWithBid?scene=***&refer=-1&bid=***&readTime=***&read_type=0&conttype=1&read_status=0&chapter_info=%5B%7B%221%22%3A%7B%22readTime%22%3A***%2C%22pay_status%22%3A0%7D%7D%5D&sp=-1
@@ -75,7 +89,7 @@ https://mqqapi.reader.qq.com/mqq/addReadTimeWithBid?scene=***&refer=-1&bid=***&r
 https://mqqapi.reader.qq.com/mqq/addReadTimeWithBid?scene=***&refer=-1&bid=***&readTime=***&read_type=0&conttype=1&read_status=0&chapter_info=%5B%7B%221%22%3A%7B%22readTime%22%3A***%2C%22pay_status%22%3A0%7D%7D%5D&sp=-1
   ```
   
-5. **特别注意：** 三个参数中每个账号信息出现的顺序一定要一致，且每个参数有几个账号就写几行，不要有多余空行！
+6. **特别注意：** 三个参数中每个账号信息出现的顺序一定要一致，且每个参数有几个账号就写几行，不要有多余空行！
 
 ### 运行方式
 
