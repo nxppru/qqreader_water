@@ -4,6 +4,7 @@ import os
 import re
 import ast
 import time
+import json
 import random
 import requests
 import qqreadCookie
@@ -146,6 +147,18 @@ def qqreadssr(headers, sec):
     return readssr_data
 
 
+def qqreadtrack(headers, data: str):
+    """Track"""
+    qqreadtrackurl = "https://mqqapi.reader.qq.com/log/v4/mqq/track"
+    finddis = re.compile(r'"dis":(.*?),')
+    data = re.sub(finddis.findall(data)[
+        0], str(int(time.time()*1000)), str(data))
+    delay()
+    track_data = requests.post(
+        qqreadtrackurl, data=json.dumps(ast.literal_eval(data)), headers=ast.literal_eval(headers)).json()
+    return track_data
+
+
 def gettime():
     """获取北京时间"""
     utc_dt = datetime.utcnow()  # UTC时间
@@ -162,6 +175,7 @@ def sendmsg(content: str):
     """发送通知"""
     notification.notify("企鹅读书通知", content)
 
+
 def main():
     for index, secrets in enumerate(qqreadCookie.get_cookies()):
         print(f"\n============开始运行第{index+1}个账号===========")
@@ -170,6 +184,7 @@ def main():
         info_data = qqreadinfo(secrets[0])
         todaytime_data = qqreadtodaytime(secrets[0])
         wktime_data = qqreadwktime(secrets[0])
+        print(f"Track update {qqreadtrack(secrets[0], secrets[1])['msg']}")
         task_data = qqreadtask(secrets[0])
         mytask_data = qqreadmytask(secrets[0])
 
@@ -253,7 +268,7 @@ def main():
                 tz += f"【宝箱翻倍】获得{box2_data['data']['amount']}金币\n"
 
         if todaytime_data//60 <= LIMIT_TIME:
-            addtime_data = qqreadaddtime(secrets[1], secrets[2])
+            addtime_data = qqreadaddtime(secrets[0], secrets[2])
             if addtime_data['code'] == 0:
                 tz += f"【阅读时长】成功上传{TIME}分钟\n"
 
@@ -270,5 +285,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-    
