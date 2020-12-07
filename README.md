@@ -46,7 +46,11 @@
 
 2. 进一本书阅读一会儿，然后退出，获取`QQREADHEADERS` `QQREADBODYS` 和 `QQREADTIMEURL` 
 
-3. `QQREADHEADERS`参数格式为
+3. `QQREADHEADERS` 和 `QQREADTIMEURL` 匹配链接为 https://mqqapi.reader.qq.com/mqq/addReadTimeWithBid?.......
+
+   `QQREADBODYS` 匹配链接为 https://mqqapi.reader.qq.com/log/v4/mqq/track
+
+4. `QQREADHEADERS`参数格式为
 
 
   ```
@@ -61,21 +65,21 @@
 {"Cookie":"ywguid=123456789;ywkey=******","aaa":"bbb",......}
   ```
 
-4. `QQREADBODYS` 参数格式为
+5. `QQREADBODYS` 参数格式为
 
 ```
-{"common":{"appid":***,"areaid":5,"qq_ver":"8.4.18.4945","os_ver":"Android 10","mp_ver":"0.31.0","mpos_ver":"1.21.0","brand":"***","model":"***","screenWidth":393,"screenHeight":816,"windowWidth":393,"windowHeight":762,"openid":"****","guid":***,"session":"***","scene":1023,"source":-1,"hasRedDot":"false","missions":-1,"caseID":-1},"dataList":[{"click1":"bookRead_click_C","click2":"bookRead_click_C","route":"pages/book-shelf/index","refer":-1,"options":{},"dis":1607305485030,"ext6":58,"eventID":"bookShelf_makeMoney_I","type":"shown"}]}
+{"common":{"appid":***,"areaid":5,"qq_ver":"8.4.18.4945","os_ver":"Android 10","mp_ver":"0.31.0","mpos_ver":"1.21.0","brand":"***","model":"***","screenWidth":393,"screenHeight":816,"windowWidth":393,"windowHeight":762,"openid":"***","guid":***,"session":"***","scene":1023,"source":-1,"hasRedDot":"false","missions":-1,"caseID":-1},"dataList":[{"click1":"bookShelf_myshelf_myBook_C","click2":"qqauthorize_addRCS_succ_C","route":"pages/book-read/index","refer":"pages/book-shelf/index","options":{"bid":"27325720","cid":"3","from":"shelf"},"dis":1607325831391,"ext6":31,"eventID":"bookRead_show_I","type":"shown","ccid":3,"bid":"27325720","bookStatus":1,"bookPay":1,"chapterStatus":0,"ext1":{"font":18,"bg":0,"pageMode":1},"from":"bookShelf_myshelf_myBook_C_0_27325720"}]}
 ```
 
 多账号请按`Enter`键换行隔开示例(这里给下三个账号的示例)
 
   ```
-{"common":{"appid":***,"areaid":5,"qq_ver":"8.4.18.4945","os_ver":"Android 10","mp_ver":"0.31.0","mpos_ver":"1.21.0","brand":"***","model":"***","screenWidth":393,"screenHeight":816,"windowWidth":393,"windowHeight":762,"openid":"****","guid":***,"session":"***","scene":1023,"source":-1,"hasRedDot":"false","missions":-1,"caseID":-1},"dataList":[{"click1":"bookRead_click_C","click2":"bookRead_click_C","route":"pages/book-shelf/index","refer":-1,"options":{},"dis":1607305485030,"ext6":58,"eventID":"bookShelf_makeMoney_I","type":"shown"}]}
-{"common":{"appid":***,"areaid":5,"qq_ver":"8.4.18.4945","os_ver":"Android 10","mp_ver":"0.31.0","mpos_ver":"1.21.0","brand":"***","model":"***","screenWidth":393,"screenHeight":816,"windowWidth":393,"windowHeight":762,"openid":"****","guid":***,"session":"***","scene":1023,"source":-1,"hasRedDot":"false","missions":-1,"caseID":-1},"dataList":[{"click1":"bookRead_click_C","click2":"bookRead_click_C","route":"pages/book-shelf/index","refer":-1,"options":{},"dis":1607305485030,"ext6":58,"eventID":"bookShelf_makeMoney_I","type":"shown"}]}
-{"common":{"appid":***,"areaid":5,"qq_ver":"8.4.18.4945","os_ver":"Android 10","mp_ver":"0.31.0","mpos_ver":"1.21.0","brand":"***","model":"***","screenWidth":393,"screenHeight":816,"windowWidth":393,"windowHeight":762,"openid":"****","guid":***,"session":"***","scene":1023,"source":-1,"hasRedDot":"false","missions":-1,"caseID":-1},"dataList":[{"click1":"bookRead_click_C","click2":"bookRead_click_C","route":"pages/book-shelf/index","refer":-1,"options":{},"dis":1607305485030,"ext6":58,"eventID":"bookShelf_makeMoney_I","type":"shown"}]}
+{"common":{"appid":***,"areaid":5,"qq_ver":"8.4.18.4945","os_ver":"Android 10","mp_ver":"0.31.0","mpos_ver":"1.21.0","brand":"***","model":"***","screenWidth":393,"screenHeight":816,"windowWidth":393,"windowHeight":762,"openid":"***","guid":***,"session":"***","scene":1023,"source":-1,"hasRedDot":"false","missions":-1,"caseID":-1},"dataList":[{"click1":"bookShelf_myshelf_myBook_C","click2":"qqauthorize_addRCS_succ_C","route":"pages/book-read/index","refer":"pages/book-shelf/index","options":{"bid":"27325720","cid":"3","from":"shelf"},"dis":1607325831391,"ext6":31,"eventID":"bookRead_show_I","type":"shown","ccid":3,"bid":"27325720","bookStatus":1,"bookPay":1,"chapterStatus":0,"ext1":{"font":18,"bg":0,"pageMode":1},"from":"bookShelf_myshelf_myBook_C_0_27325720"}]}
+{"common":{"appid":***,"areaid":5,"qq_ver":"8.4.18.4945","os_ver":"Android 10","mp_ver":"0.31.0","mpos_ver":"1.21.0","brand":"***","model":"***","screenWidth":393,"screenHeight":816,"windowWidth":393,"windowHeight":762,"openid":"***","guid":***,"session":"***","scene":1023,"source":-1,"hasRedDot":"false","missions":-1,"caseID":-1},"dataList":[{"click1":"bookShelf_myshelf_myBook_C","click2":"qqauthorize_addRCS_succ_C","route":"pages/book-read/index","refer":"pages/book-shelf/index","options":{"bid":"27325720","cid":"3","from":"shelf"},"dis":1607325831391,"ext6":31,"eventID":"bookRead_show_I","type":"shown","ccid":3,"bid":"27325720","bookStatus":1,"bookPay":1,"chapterStatus":0,"ext1":{"font":18,"bg":0,"pageMode":1},"from":"bookShelf_myshelf_myBook_C_0_27325720"}]}
+{"common":{"appid":***,"areaid":5,"qq_ver":"8.4.18.4945","os_ver":"Android 10","mp_ver":"0.31.0","mpos_ver":"1.21.0","brand":"***","model":"***","screenWidth":393,"screenHeight":816,"windowWidth":393,"windowHeight":762,"openid":"***","guid":***,"session":"***","scene":1023,"source":-1,"hasRedDot":"false","missions":-1,"caseID":-1},"dataList":[{"click1":"bookShelf_myshelf_myBook_C","click2":"qqauthorize_addRCS_succ_C","route":"pages/book-read/index","refer":"pages/book-shelf/index","options":{"bid":"27325720","cid":"3","from":"shelf"},"dis":1607325831391,"ext6":31,"eventID":"bookRead_show_I","type":"shown","ccid":3,"bid":"27325720","bookStatus":1,"bookPay":1,"chapterStatus":0,"ext1":{"font":18,"bg":0,"pageMode":1},"from":"bookShelf_myshelf_myBook_C_0_27325720"}]}
   ```
 
-5. `QQREADTIMEURL` 参数格式为
+6. `QQREADTIMEURL` 参数格式为
 
 ```
 https://mqqapi.reader.qq.com/mqq/addReadTimeWithBid?scene=***&refer=-1&bid=***&readTime=***&read_type=0&conttype=1&read_status=0&chapter_info=%5B%7B%221%22%3A%7B%22readTime%22%3A***%2C%22pay_status%22%3A0%7D%7D%5D&sp=-1
@@ -89,7 +93,7 @@ https://mqqapi.reader.qq.com/mqq/addReadTimeWithBid?scene=***&refer=-1&bid=***&r
 https://mqqapi.reader.qq.com/mqq/addReadTimeWithBid?scene=***&refer=-1&bid=***&readTime=***&read_type=0&conttype=1&read_status=0&chapter_info=%5B%7B%221%22%3A%7B%22readTime%22%3A***%2C%22pay_status%22%3A0%7D%7D%5D&sp=-1
   ```
   
-6. **特别注意：** 三个参数中每个账号信息出现的顺序一定要一致，且每个参数有几个账号就写几行，不要有多余空行！
+7. **特别注意：** 三个参数中每个账号信息出现的顺序一定要一致，且每个参数有几个账号就写几行，不要有多余空行！
 
 ### 运行方式
 
