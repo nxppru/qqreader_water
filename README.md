@@ -34,6 +34,7 @@
 | `QQREADTIMEURL`      | 阅读时长URL    | 必须   | 上传阅读时长功能需要的URL        | 
 | `NOTIFYTYPE`         | 通知类型       | 非必须 | 详见通知类型                    |  
 | `NOTIFYCFG`          | 通知服务       | 非必须 | 详见通知服务                    | 
+| `DRAWAMOUNT`         | 自动提现       | 非必须 | 详见自动提现                    |
 | `SCKEY`              | server酱key   | 非必须 | 自行获取                        | 
 | `BARK`               | bark秘钥      | 非必须 | 自行获取                        | 
 | `TG_BOT_TOKEN`      | telegram推送  | 非必须 | tg推送,填写自己申请[@BotFather](https://t.me/BotFather)的Token,如`10xxx4:AAFcqxxxxgER5uw` , [具体教程](https://github.com/lxk0301/jd_scripts/blob/master/backUp/TG_PUSH.md) |
@@ -135,6 +136,16 @@ GitHub action自动运行，账号信息读取自 `Repo-Setting-Secrets`
 
 ```
   [0，1，2，3]  0：关闭通知   1：所有通知   2：领取宝箱成功通知   3：每领15个宝箱通知一次
+```
+
+### 自动提现
+
+默认为关闭此功能，需要自动提现请修改 `DRAWAMOUNT` 参数
+
+支持提现类型
+
+```
+  [0, 10, 30, 50, 100] 分别为关闭自动提现、提现10元、30元、50元、100元，默认为关闭
 ```
 
 ### 同步Fork后的代码
