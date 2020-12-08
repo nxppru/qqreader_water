@@ -17,10 +17,13 @@ TIME = 5  # 单次上传阅读时间，默认为5分钟
 LIMIT_TIME = 18  # 每日最大上传阅读时间，默认为18小时
 DELAYSEC = 1  # 单次任务延时，默认为1秒
 NOTIFYTYPE = 3  # 0为关闭通知，1为所有通知，2为领取宝箱成功通知，3为每领15个宝箱通知一次
+DRAWAMOUNT = 10  # [10, 30, 50, 100] 分别为提现10元、30元、50元、100元，默认为10元
 # 以上为可修改参数
 
 if "NOTIFYTYPE" in os.environ and os.environ["NOTIFYTYPE"].strip():
     NOTIFYTYPE = ast.literal_eval(os.environ["NOTIFYTYPE"])
+if "DRAWAMOUNT" in os.environ and os.environ["DRAWAMOUNT"].strip():
+    DRAWAMOUNT = ast.literal_eval(os.environ["DRAWAMOUNT"])
 
 
 def getTemplate(headers, functionId):
@@ -147,6 +150,21 @@ def qqreadssr(headers, sec):
     return readssr_data
 
 
+def qqreadwithdrawinfo(headers):
+    withdrawinfo_data = getTemplate(
+        headers, f"red_packet/user/withdraw/list?pn=1")['data']['list'][0]
+    return withdrawinfo_data
+
+
+def qqreadwithdrawal(headers, amount):
+    """提现"""
+    qqreadwithdrawalurl = f"https://mqqapi.reader.qq.com/mqq/red_packet/user/withdraw?amount={amount}"
+    delay()
+    withdrawal_data = requests.post(
+        qqreadwithdrawalurl, headers=ast.literal_eval(headers)).json()['data']['msg']
+    return withdrawal_data
+
+
 def qqreadtrack(headers, data: str):
     """Track"""
     qqreadtrackurl = "https://mqqapi.reader.qq.com/log/v4/mqq/track"
@@ -191,9 +209,9 @@ def delay():
     time.sleep(DELAYSEC)
 
 
-def sendmsg(content: str):
+def sendmsg(title: str, content: str):
     """发送通知"""
-    notification.notify("企鹅读书通知", content)
+    notification.notify(title, content)
 
 
 def start(index, secrets):
@@ -291,17 +309,24 @@ def start(index, secrets):
         if addtime_data['code'] == 0:
             tz += f"【阅读时长】成功上传{TIME}分钟\n"
 
+    if task_data['user']['amount'] >= DRAWAMOUNT*10000 and gettime().hour == 21:
+        withdrawinfo_data = qqreadwithdrawinfo(secrets[0])['createTime']
+        if withdrawinfo_data < getTimestamp():
+            withdrawal_data = qqreadwithdrawal(secrets[0], DRAWAMOUNT*10000)
+            sendmsg("企鹅读书提现通知", f"提现{DRAWAMOUNT}元：{withdrawal_data}")
+            tz += f"【自动提现】提现{DRAWAMOUNT}元（{withdrawal_data}）"
+
     tz += f"【今日获得】{totalAmount(secrets[0])}金币\n"
 
     tz += f"\n🕛耗时：{time.time()-start_time}秒"
     print(tz)
 
     if NOTIFYTYPE == 1:
-        sendmsg(tz)
+        sendmsg("企鹅读书通知", tz)
     if NOTIFYTYPE == 2 and task_data['treasureBox']['doneFlag'] == 0:
-        sendmsg(tz)
+        sendmsg("企鹅读书通知", tz)
     if NOTIFYTYPE == 3 and task_data['treasureBox']['doneFlag'] == 0 and task_data['treasureBox']['count'] % 15 == 0:
-        sendmsg(tz)
+        sendmsg("企鹅读书通知", tz)
 
 
 if __name__ == "__main__":
