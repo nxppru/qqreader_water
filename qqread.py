@@ -159,11 +159,31 @@ def qqreadtrack(headers, data: str):
     return track_data
 
 
+def totalAmount(headers)->str:
+    """统计今日获得金币"""
+    totalamount = 0    
+    for pn in range(12):
+        url = f'red_packet/user/trans/list?pn={pn+1}'
+        amount_data = getTemplate(headers, url)['data']['list']
+        for i in amount_data:
+            if i['createTime'] >= getTimestamp():
+                totalamount += i['amount']
+    return str(totalamount)
+
+
 def gettime():
     """获取北京时间"""
     utc_dt = datetime.utcnow()  # UTC时间
     bj_dt = (utc_dt+timedelta(hours=8)).strftime('%Y-%m-%d %H:%M:%S')  # 北京时间
     return bj_dt
+
+
+def getTimestamp()-> int:
+    """获取当日0点时间戳"""
+    bj_dt = (datetime.utcnow()+timedelta(hours=8)).strftime('%Y-%m-%d') + " 00:00:00"
+    timeArray = time.strptime(bj_dt, "%Y-%m-%d %H:%M:%S")
+    timeStamp = int(time.mktime(timeArray)*1000)
+    return timeStamp
 
 
 def delay():
@@ -271,6 +291,8 @@ def main():
             addtime_data = qqreadaddtime(secrets[0], secrets[2])
             if addtime_data['code'] == 0:
                 tz += f"【阅读时长】成功上传{TIME}分钟\n"
+
+        tz += f"【今日获得】{totalAmount(secrets[0])}金币\n"
 
         tz += f"\n🕛耗时：{time.time()-start_time}秒"
         print(tz)
