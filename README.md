@@ -41,7 +41,7 @@
 | `TG_USER_ID`         | telegram推送  | 非必须 | tg推送,填写[@getuseridbot](https://t.me/getuseridbot)中获取到的纯数字ID, [具体教程](https://github.com/lxk0301/jd_scripts/blob/master/backUp/TG_PUSH.md) |
 
 
-**⚠️cookie获取方法：**
+**⚠️必须参数获取方法：**
 
 1. 进入 https://m.q.qq.com/a/s/d3eacc70120b9a37e46bad408c0c4c2a 
 
