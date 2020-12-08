@@ -32,9 +32,9 @@
 | `QQREADHEADERS`      | 主header      | 必须   | 绝大多数功能的正常使用需要此参数  | 
 | `QQREADBODYS`        | 主body        | 必须   | 绝大多数功能的正常使用需要此参数  |  
 | `QQREADTIMEURL`      | 阅读时长URL    | 必须   | 上传阅读时长功能需要的URL        | 
-| `NOTIFYTYPE`         | 通知类型       | 非必须 | 详见通知类型                    |  
-| `NOTIFYCFG`          | 通知服务       | 非必须 | 详见通知服务                    | 
-| `DRAWAMOUNT`         | 自动提现       | 非必须 | 详见自动提现                    |
+| `NOTIFYTYPE`         | 通知类型       | 非必须 | 详见[通知类型](#通知类型)        |  
+| `NOTIFYCFG`          | 通知服务       | 非必须 | 详见[通知服务](#通知服务)        | 
+| `DRAWAMOUNT`         | 自动提现       | 非必须 | 详见[自动提现](#自动提现)        |
 | `SCKEY`              | server酱key   | 非必须 | 自行获取                        | 
 | `BARK`               | bark秘钥      | 非必须 | 自行获取                        | 
 | `TG_BOT_TOKEN`      | telegram推送  | 非必须 | tg推送,填写自己申请[@BotFather](https://t.me/BotFather)的Token,如`10xxx4:AAFcqxxxxgER5uw` , [具体教程](https://github.com/lxk0301/jd_scripts/blob/master/backUp/TG_PUSH.md) |
