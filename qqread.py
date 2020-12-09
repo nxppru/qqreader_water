@@ -151,6 +151,7 @@ def qqreadssr(headers, sec):
 
 
 def qqreadwithdrawinfo(headers):
+    """查询提现信息"""
     withdrawinfo_data = getTemplate(
         headers, f"red_packet/user/withdraw/list?pn=1")['data']['list'][0]
     return withdrawinfo_data
@@ -161,8 +162,12 @@ def qqreadwithdrawal(headers, amount):
     qqreadwithdrawalurl = f"https://mqqapi.reader.qq.com/mqq/red_packet/user/withdraw?amount={amount}"
     delay()
     withdrawal_data = requests.post(
-        qqreadwithdrawalurl, headers=ast.literal_eval(headers)).json()['data']['msg']
-    return withdrawal_data
+        qqreadwithdrawalurl, headers=ast.literal_eval(headers)).json()
+    if withdrawal_data['data']['code'] == 0:
+        msg = withdrawal_data['msg']
+    else:
+        msg = withdrawal_data['data']['msg']
+    return msg
 
 
 def qqreadtrack(headers, data: str):
@@ -181,8 +186,8 @@ def totalAmount(headers) -> str:
     """统计今日获得金币"""
     totalamount = 0
     for pn in range(12):
-        url = f'red_packet/user/trans/list?pn={pn+1}'
-        amount_data = getTemplate(headers, url)['data']['list']
+        url = f'https://mqqapi.reader.qq.com/mqq/red_packet/user/trans/list?pn={pn+1}'
+        amount_data = requests.get(url, headers=ast.literal_eval(headers))['data']['list']
         for i in amount_data:
             if i['createTime'] >= getTimestamp():
                 totalamount += i['amount']
@@ -316,7 +321,7 @@ def start(index, secrets):
             sendmsg("企鹅读书提现通知", f"提现{DRAWAMOUNT}元：{withdrawal_data}")
             tz += f"【自动提现】提现{DRAWAMOUNT}元（{withdrawal_data}）"
 
-    tz += f"【今日获得】{totalAmount(secrets[0])}金币\n"
+    tz += f"【今日收益】{totalAmount(secrets[0])}金币\n"
 
     tz += f"\n🕛耗时：{time.time()-start_time}秒"
     print(tz)
