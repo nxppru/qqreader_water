@@ -43,7 +43,7 @@
 
 **⚠️必须参数获取方法：**
 
-1. 进入 https://m.q.qq.com/a/s/d3eacc70120b9a37e46bad408c0c4c2a 
+1. 进入 https://m.q.qq.com/a/s/6fb00f7035f82425df91a5b668f6be8b
 
 2. 进一本书阅读一会儿，然后退出，获取`QQREADHEADERS` `QQREADBODYS` 和 `QQREADTIMEURL` 
 
