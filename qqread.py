@@ -187,7 +187,7 @@ def totalAmount(headers) -> str:
     totalamount = 0
     for pn in range(12):
         url = f'https://mqqapi.reader.qq.com/mqq/red_packet/user/trans/list?pn={pn+1}'
-        amount_data = requests.get(url, headers=ast.literal_eval(headers))['data']['list']
+        amount_data = requests.get(url, headers=ast.literal_eval(headers)).json()['data']['list']
         for i in amount_data:
             if i['createTime'] >= getTimestamp():
                 totalamount += i['amount']
