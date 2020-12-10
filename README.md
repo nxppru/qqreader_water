@@ -1,6 +1,6 @@
 <h1 align="center">QQRead使用说明</h1>
 
-<p align="center"><img alt="Water's github stats" src="https://github-readme-stats.vercel.app/api?username=Water008&show_icons=true&theme=merko" /></p>
+<p align="center"><img alt="Water's github stats" src="https://github-readme-stats.vercel.app/api?username=Water008&show_icons=true" /></p>
 
 > 基于python的自动化脚本  
 > 低调使用，请勿到处宣传  
