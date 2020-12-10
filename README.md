@@ -162,3 +162,7 @@ GitHub action自动运行，账号信息读取自 `Repo-Setting-Secrets`
 
 * [@lxk0301](https://github.com/lxk0301)
 
+### Technologies used
+<img align="left" alt="Python logo" height="100px" src="https://raw.githubusercontent.com/tony-nguyen1/tony-nguyen1/main/.github/images/PythonLogo.svg"/>
+
+<img align="left" alt="Python logo" height="100px" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Water008&layout=compact&hide_border=true"/>
