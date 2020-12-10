@@ -1,4 +1,31 @@
-# -*- coding: utf8 -*-
+# -*- coding: utf-8 -*-
+# @Time    : 2020-12-10
+# @Author  : water008@github
+# @File    : qqread.py
+
+"""
+
+Github地址    https://github.com/Water008/qqread
+TG 频道       https://t.me/water_scripts
+TG 群组       https://t.me/joinchat/AAAAAEhFTR9JV3Vf6NAWZw
+
+⚠️必须参数获取方法：
+
+进入 https://m.q.qq.com/a/s/6fb00f7035f82425df91a5b668f6be8b
+
+进一本书阅读一会儿，然后退出，获取QQREADHEADERS QQREADBODYS 和 QQREADTIMEURL
+
+QQREADHEADERS 和 QQREADTIMEURL 匹配链接为 https://mqqapi.reader.qq.com/mqq/addReadTimeWithBid?.......
+
+QQREADBODYS 匹配链接为 https://mqqapi.reader.qq.com/log/v4/mqq/track
+
+详细说明请阅读 https://github.com/Water008/qqread/blob/main/README.md
+
+如遇问题，欢迎提交Issues或在TG反馈
+
+⚠️宝箱奖励为20分钟一次，自己根据情况设置定时，建议cron设置为 */11 * * * * ，即每11分钟运行一次
+
+"""
 
 import os
 import re
