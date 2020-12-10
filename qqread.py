@@ -173,7 +173,7 @@ def qqreadwithdrawal(headers, amount):
 def qqreadtrack(headers, data: str):
     """Track"""
     qqreadtrackurl = "https://mqqapi.reader.qq.com/log/v4/mqq/track"
-    finddis = re.compile(r'"dis":(.*?),')
+    finddis = re.compile(r'"dis".*?(\d{13})')
     data = re.sub(finddis.findall(data)[
         0], str(int(time.time()*1000)), str(data))
     delay()
