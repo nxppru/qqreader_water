@@ -147,6 +147,7 @@ def qqreadtodaytime(headers, bidnum):
     bid = re.findall(r'bid=(\d+)&', bidnum)[0]
     todaytime_data = getTemplate(headers, f"page/config?router=%2Fpages%2Fbook-read%2Findex&options=%7B%22bid%22%3A%22{bid}%22%7D")[
         'data']['pageParams']['todayReadSeconds']
+    print(todaytime_data)
     return todaytime_data//60
 
 
