@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# @Time    : 2020-12-10
+# @Time    : 2020-12-11
 # @Author  : water008@github
 # @File    : qqread.py
 
@@ -142,9 +142,10 @@ def qqreadwkpick(headers, num):
     return wkpick_data
 
 
-def qqreadtodaytime(headers):
+def qqreadtodaytime(headers, bidnum):
     """获取本日阅读时长"""
-    todaytime_data = getTemplate(headers, "page/config?router=/pages/book-read/index&options=")[
+    bid = re.findall(r'bid=(\d+)&', bidnum)[0]
+    todaytime_data = getTemplate(headers, f"page/config?router=%2Fpages%2Fbook-read%2Findex&options=%7B%22bid%22%3A%22{bid}%22%7D")[
         'data']['pageParams']['todayReadSeconds']
     return todaytime_data//60
 
@@ -159,8 +160,8 @@ def qqreadtodaygift(headers, sec):
 def qqreadaddtime(headers, addtimeurl):
     """上传阅读时长"""
     sectime = random.randint(TIME*60*1000, (TIME+1)*60*1000)
-    findtime = re.compile(r'readTime=(.*?)&read_')
-    findtime1 = re.compile(r'readTime%22%3A(.*?)%2C')
+    findtime = re.compile(r'readTime=(\d+)&read_')
+    findtime1 = re.compile(r'readTime%22%3A(\d+)%2C')
     url = re.sub(findtime.findall(addtimeurl)[
                  0], str(sectime), str(addtimeurl))
     url = re.sub(findtime1.findall(addtimeurl)[
@@ -251,7 +252,7 @@ def start(index, secrets):
     start_time = time.time()
     tz = ""
     info_data = qqreadinfo(secrets[0])
-    todaytime_data = qqreadtodaytime(secrets[0])
+    todaytime_data = qqreadtodaytime(secrets[0], secrets[2])
     wktime_data = qqreadwktime(secrets[0])
     print(f"Track update {qqreadtrack(secrets[0], secrets[1])['msg']}")
     task_data = qqreadtask(secrets[0])
