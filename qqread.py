@@ -56,7 +56,6 @@ if "DRAWAMOUNT" in os.environ and os.environ["DRAWAMOUNT"].strip():
 def getTemplate(headers, functionId):
     """请求模板"""
     functionURL = f"https://mqqapi.reader.qq.com/mqq/{functionId}"
-    print(functionURL)
     delay()
     data = requests.get(functionURL, headers=ast.literal_eval(headers)).json()
     return data
